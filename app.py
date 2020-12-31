@@ -14,11 +14,6 @@ app.secret_key = "4321"  # Should not be in public github
 api = Api(app)
 
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 jwt = JWT(app, authenticate, identity)  # /auth
 
 api.add_resource(Store, "/store/<string:name>")
